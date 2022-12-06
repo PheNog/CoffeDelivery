@@ -1,41 +1,77 @@
-import { ButtonCart, CardMenuContainer, CountAndButtonContainer, CountItem, ImageLabelTitleSubtitleContainer, ImageMenuItem, PriceCountCartContainer, PriceLabel, R$Label, SubTitleItem, TitleItem, TypeLabel } from "./styles";
+import {
+    ButtonCart,
+    CardMenuContainer,
+    CoffeFlavorName,
+    CoffeTypeLabel,
+    CountAndButtonContainer,
+    CountItem,
+    ImageLabelTitleSubtitleContainer,
+    ImageMenuItem,
+    PriceCountCartContainer,
+    PriceLabel,
+    R$Label,
+    CoffeFlavorDescription,
+    ContainerLabelsCoffeType,
+
+} from "./styles";
 import { ShoppingCart } from "phosphor-react";
-import ImageTypeExpresso from './assets/expresso-type.svg'
 
+interface MenuCoffesProps {
+    id: string
+    coffeImage: string
+    coffeType: string[]
+    coffeFlavorName: string
+    coffeFlavorDescription: string
+    coffePrice: number
+}
 
-export function MenuCoffes() {
+export function MenuCoffes({
+    id,
+    coffeType,
+    coffeImage,
+    coffeFlavorName,
+    coffeFlavorDescription,
+    coffePrice
+}: MenuCoffesProps) {
+    
     return (
         <CardMenuContainer>
             <ImageLabelTitleSubtitleContainer>
-                <ImageMenuItem src={ImageTypeExpresso} />
-                <TypeLabel>
-                    Tradicional
-                </TypeLabel>
-                <TitleItem>
-                    Expresso Tradicional
-                </TitleItem>
-                <SubTitleItem>
-                    O tradicional café feito com água quente e grãos moídos
-                </SubTitleItem>
+                <ImageMenuItem src={coffeImage} />
+                <ContainerLabelsCoffeType>
+                    {
+                        coffeType.map((type) => {
+                            return (
+                                <CoffeTypeLabel>
+                                    {type}
+                                </CoffeTypeLabel>
+                            )
+                        })
+                    }
+                </ContainerLabelsCoffeType>
+                <CoffeFlavorName>
+                    {coffeFlavorName}
+                </CoffeFlavorName>
+                <CoffeFlavorDescription>
+                    {coffeFlavorDescription}
+                </CoffeFlavorDescription>
             </ImageLabelTitleSubtitleContainer>
             <PriceCountCartContainer>
                 <PriceLabel>
                     <R$Label>
                         R$
                     </R$Label>
-                    9,90
+                    {coffePrice.toString()}0
                 </PriceLabel>
                 <CountAndButtonContainer>
-                <CountItem 
-                type='number'
-                placeholder="1"
-                >
-                    
-                </CountItem>
-                <ButtonCart>
-                    <ShoppingCart size={26} color='white' />
-                </ButtonCart>
-
+                    <CountItem
+                        type='number'
+                        placeholder="1"
+                    >
+                    </CountItem>
+                    <ButtonCart>
+                        <ShoppingCart size={26} color='white' />
+                    </ButtonCart>
                 </CountAndButtonContainer>
             </PriceCountCartContainer>
         </CardMenuContainer>

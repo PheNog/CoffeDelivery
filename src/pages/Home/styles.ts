@@ -95,3 +95,10 @@ export const TitleMenuCoffes = styled.div`
     margin-bottom: 2rem;
 
 `
+export const CoffesCatalogContainer = styled.div`
+    display: flex;
+    gap: 2rem;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 2.5rem;
+`

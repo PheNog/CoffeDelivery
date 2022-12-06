@@ -1,11 +1,12 @@
 
-import { ContainerItemsIcons, HomeContainer, IconAndLabel, ImgCoffeCup, ItemsIconsAndLabels, MenuFullContainer, RowIntroContainer, TitleMenuCoffes, TitleSubtitleAndItems } from "./styles";
+import { CoffesCatalogContainer, ContainerItemsIcons, HomeContainer, IconAndLabel, ImgCoffeCup, ItemsIconsAndLabels, MenuFullContainer, RowIntroContainer, TitleMenuCoffes, TitleSubtitleAndItems } from "./styles";
 import coffeCupHome from '../../assets/coffe-delivery-home.png'
 import logoItem1 from '../../assets/icon (1).svg'
 import logoItem2 from '../../assets/icon (2).svg'
 import logoItem3 from '../../assets/icon (5).svg'
 import logoItem4 from '../../assets/icon (4).svg'
 import { MenuCoffes } from "../../components/MenuCoffes";
+import { dataCoffesFlavor } from "../../components/MenuCoffes/dataCoffes";
 
 export function Home() {
 
@@ -55,7 +56,83 @@ export function Home() {
                 <TitleMenuCoffes>
                     Nossos cafés
                 </TitleMenuCoffes>
-                <MenuCoffes />
+
+                <CoffesCatalogContainer>
+                    {dataCoffesFlavor.map((coffeFlavor) => {
+                        const idsLine = ['1', '2', '3', '4']
+                        if(!idsLine.includes(coffeFlavor.id)) return
+
+                        return (
+                            <MenuCoffes
+                                key={coffeFlavor.id}
+                                id={coffeFlavor.id}
+                                coffeType={coffeFlavor.coffeType}
+                                coffeFlavorName={coffeFlavor.coffeFlavorName}
+                                coffeFlavorDescription={coffeFlavor.coffeFlavorDescription}
+                                coffePrice={coffeFlavor.coffePrice}
+                                coffeImage={coffeFlavor.coffeImage}
+                            />
+                        )
+                    })
+                    }
+                </CoffesCatalogContainer>
+                <CoffesCatalogContainer>
+                    {dataCoffesFlavor.map((coffeFlavor) => {
+                        const idsLine = ['5', '6', '7', '8']
+                        if(!idsLine.includes(coffeFlavor.id)) return
+
+                        return (
+                            <MenuCoffes
+                                key={coffeFlavor.id}
+                                id={coffeFlavor.id}
+                                coffeType={coffeFlavor.coffeType}
+                                coffeFlavorName={coffeFlavor.coffeFlavorName}
+                                coffeFlavorDescription={coffeFlavor.coffeFlavorDescription}
+                                coffePrice={coffeFlavor.coffePrice}
+                                coffeImage={coffeFlavor.coffeImage}
+                            />
+                        )
+                    })
+                    }
+                </CoffesCatalogContainer>
+                <CoffesCatalogContainer>
+                    {dataCoffesFlavor.map((coffeFlavor) => {
+                        const idsLine = ['9', '10', '11', '12']
+                        if(!idsLine.includes(coffeFlavor.id)) return
+
+                        return (
+                            <MenuCoffes
+                                key={coffeFlavor.id}
+                                id={coffeFlavor.id}
+                                coffeType={coffeFlavor.coffeType}
+                                coffeFlavorName={coffeFlavor.coffeFlavorName}
+                                coffeFlavorDescription={coffeFlavor.coffeFlavorDescription}
+                                coffePrice={coffeFlavor.coffePrice}
+                                coffeImage={coffeFlavor.coffeImage}
+                            />
+                        )
+                    })
+                    }
+                </CoffesCatalogContainer>
+                <CoffesCatalogContainer>
+                    {dataCoffesFlavor.map((coffeFlavor) => {
+                        const idsLine = ['13', '14']
+                        if(!idsLine.includes(coffeFlavor.id)) return
+
+                        return (
+                            <MenuCoffes
+                                key={coffeFlavor.id}
+                                id={coffeFlavor.id}
+                                coffeType={coffeFlavor.coffeType}
+                                coffeFlavorName={coffeFlavor.coffeFlavorName}
+                                coffeFlavorDescription={coffeFlavor.coffeFlavorDescription}
+                                coffePrice={coffeFlavor.coffePrice}
+                                coffeImage={coffeFlavor.coffeImage}
+                            />
+                        )
+                    })
+                    }
+                </CoffesCatalogContainer>
             </MenuFullContainer>
         </HomeContainer >
     )

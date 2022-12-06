@@ -22,7 +22,7 @@ export const ImageMenuItem = styled.img`
     top: -2rem;
     margin-bottom: 0.75rem;
 `
-export const TypeLabel = styled.label`
+export const CoffeTypeLabel = styled.label`
     background: ${(props) => props.theme['yellow-light']};
     color: ${(props) => props.theme['yellow-dark']};
     font-family: 'Roboto';
@@ -41,7 +41,7 @@ export const TypeLabel = styled.label`
     top: -2rem;
     margin-bottom: 1rem;
 `
-export const TitleItem = styled.h1`
+export const CoffeFlavorName = styled.h1`
     /* Title/Title S */
     font-family: 'Baloo 2';
     font-style: normal;
@@ -55,7 +55,7 @@ export const TitleItem = styled.h1`
 
 `
 
-export const SubTitleItem = styled.h2`
+export const CoffeFlavorDescription = styled.h2`
     /* Text/Regular S */
     font-family: 'Roboto';
     font-style: normal;
@@ -65,16 +65,18 @@ export const SubTitleItem = styled.h2`
     text-align: center;
     color:  ${(props) => props.theme['base-label']};
     position: relative;
+    width: 15rem;
     top: -2rem;
 `
 export const PriceCountCartContainer = styled.div`
     display: flex;
     position: relative;
-    top: -2rem;
+    top: -3rem;
     justify-content: space-between;
     padding: 1.5rem 1.5rem;
     color: black;
     align-items: center;
+    margin-bottom: 1.5rem;
 `
 export const PriceLabel = styled.label`
     color:  ${(props) => props.theme['base-text']};
@@ -131,6 +133,11 @@ export const ButtonCart = styled.button`
     border-radius: 6px;
     border: 0;
     padding: 6px;
+`
+export const ContainerLabelsCoffeType = styled.div`
+    display:flex;
+    justify-content: center;
+    align-items: center;
 `
 
 
