@@ -18,7 +18,6 @@ export function Home() {
                     <h1>Encontre o café perfeito para qualquer hora do dia</h1>
                     <h2>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</h2>
                     <ContainerItemsIcons>
-
                         <ItemsIconsAndLabels>
                             <IconAndLabel>
                                 <img src={logoItem1} />
@@ -59,66 +58,6 @@ export function Home() {
 
                 <CoffesCatalogContainer>
                     {dataCoffesFlavor.map((coffeFlavor) => {
-                        const idsLine = ['1', '2', '3', '4']
-                        if(!idsLine.includes(coffeFlavor.id)) return
-
-                        return (
-                            <MenuCoffes
-                                key={coffeFlavor.id}
-                                id={coffeFlavor.id}
-                                coffeType={coffeFlavor.coffeType}
-                                coffeFlavorName={coffeFlavor.coffeFlavorName}
-                                coffeFlavorDescription={coffeFlavor.coffeFlavorDescription}
-                                coffePrice={coffeFlavor.coffePrice}
-                                coffeImage={coffeFlavor.coffeImage}
-                            />
-                        )
-                    })
-                    }
-                </CoffesCatalogContainer>
-                <CoffesCatalogContainer>
-                    {dataCoffesFlavor.map((coffeFlavor) => {
-                        const idsLine = ['5', '6', '7', '8']
-                        if(!idsLine.includes(coffeFlavor.id)) return
-
-                        return (
-                            <MenuCoffes
-                                key={coffeFlavor.id}
-                                id={coffeFlavor.id}
-                                coffeType={coffeFlavor.coffeType}
-                                coffeFlavorName={coffeFlavor.coffeFlavorName}
-                                coffeFlavorDescription={coffeFlavor.coffeFlavorDescription}
-                                coffePrice={coffeFlavor.coffePrice}
-                                coffeImage={coffeFlavor.coffeImage}
-                            />
-                        )
-                    })
-                    }
-                </CoffesCatalogContainer>
-                <CoffesCatalogContainer>
-                    {dataCoffesFlavor.map((coffeFlavor) => {
-                        const idsLine = ['9', '10', '11', '12']
-                        if(!idsLine.includes(coffeFlavor.id)) return
-
-                        return (
-                            <MenuCoffes
-                                key={coffeFlavor.id}
-                                id={coffeFlavor.id}
-                                coffeType={coffeFlavor.coffeType}
-                                coffeFlavorName={coffeFlavor.coffeFlavorName}
-                                coffeFlavorDescription={coffeFlavor.coffeFlavorDescription}
-                                coffePrice={coffeFlavor.coffePrice}
-                                coffeImage={coffeFlavor.coffeImage}
-                            />
-                        )
-                    })
-                    }
-                </CoffesCatalogContainer>
-                <CoffesCatalogContainer>
-                    {dataCoffesFlavor.map((coffeFlavor) => {
-                        const idsLine = ['13', '14']
-                        if(!idsLine.includes(coffeFlavor.id)) return
-
                         return (
                             <MenuCoffes
                                 key={coffeFlavor.id}

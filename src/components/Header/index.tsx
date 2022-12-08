@@ -13,6 +13,7 @@ export const Header = () => {
                     <button>
                         <ShoppingCart
                             size={18}
+                            weight="fill" 
                         />
                     </button>
                 </CartAndLocation>

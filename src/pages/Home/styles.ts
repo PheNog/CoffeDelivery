@@ -98,7 +98,9 @@ export const TitleMenuCoffes = styled.div`
 export const CoffesCatalogContainer = styled.div`
     display: flex;
     gap: 2rem;
+    flex-wrap: wrap;
     box-sizing: border-box;
     width: 100%;
     margin-top: 2.5rem;
+    padding-bottom: 7rem;
 `

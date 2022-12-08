@@ -133,11 +133,16 @@ export const ButtonCart = styled.button`
     border-radius: 6px;
     border: 0;
     padding: 6px;
+    cursor: pointer;
+    :hover {
+        background-color: ${(props) => props.theme['purple']};
+    }
 `
 export const ContainerLabelsCoffeType = styled.div`
     display:flex;
     justify-content: center;
     align-items: center;
+    gap: 0.25rem;
 `
 
 

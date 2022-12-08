@@ -70,7 +70,7 @@ export function MenuCoffes({
                     >
                     </CountItem>
                     <ButtonCart>
-                        <ShoppingCart size={26} color='white' />
+                        <ShoppingCart size={26} weight="fill"  color='white' />
                     </ButtonCart>
                 </CountAndButtonContainer>
             </PriceCountCartContainer>
