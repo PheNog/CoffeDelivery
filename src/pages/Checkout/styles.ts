@@ -16,20 +16,12 @@ export const FormAndPaymentContainer = styled.div`
     margin-left: 8rem;
 `
 
-export const PaymentMethodContainer = styled.div`
-    margin-top: 0.75rem;
-    display: flex;
-    padding: 2.5rem;
-    margin-bottom: 8rem;
-    background-color:${props => props.theme["base-card"]};
-`
-export const CartComponent = styled.div`
+export const CartComponentContainer = styled.div`
     margin-right: 8rem;
     width: 28rem;
-    input {
-        width: 6rem;
-    }
-
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 `
 export const TitlesCheckout = styled.div`
     font-family: 'Baloo 2';
@@ -43,38 +35,70 @@ export const TitlesCheckout = styled.div`
     color: ${props => props.theme["base-subtitle"]};
 
 `
-export const LabelPayment = styled.label`
-    color: ${props => props.theme["purple-dark"]};
-    width: 178.67px;
-    height: 51px;
-    border-radius: 6px;
-    border: 0;
-    padding: 0.75rem;
+export const CardCartContainer = styled.div`
     display: flex;
-    align-items: center;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 160%;
-    background: ${props => props.theme["base-button"]};
-    svg {
-        color: ${props => props.theme["purple"]};
-        margin-right: 0.75rem;
-        margin-bottom: 4px;
-    }
-    :selected {
-        border: 1px solid ${props => props.theme["purple-dark"]};
-    }
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2.5rem;
+    background: ${props => props.theme["base-card"]};
+    border-radius: 6px 44px;
 `
-
-export const InputHidden = styled.input`
-    display: none;
-`
-
-export const ContainerLabels = styled.div`
+export const ContainerPaymentConfirm = styled.div`
     display: flex;
+    flex-direction: column;
     gap: 0.75rem;
     width: 100%;
+    margin-bottom: 1.5rem;
+`
+
+
+export const RowTotalItensEntrega = styled.div`
+    display:flex;
+    width: 100%;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    color: ${props => props.theme["base-text"]};
+    justify-content: space-between;
+`
+export const RowFinalTotal = styled.div`
+    display:flex;
+    width: 100%;
+    justify-content: space-between;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 130%;
+    align-items: center;
+    text-align: right;
+    color: ${props => props.theme["base-subtitle"]};
 
 `
+export const ButtonConfirmOrder = styled.button`
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 8px;
+    gap: 4px;
+    height: 46px;
+    background: ${props => props.theme["yellow"]};
+    border-radius: 6px;
+    border: 0;
+    cursor: pointer;
+    :hover{
+        background: ${props => props.theme["yellow-dark"]};
+    }
+`
+export const ItemsCartContainer = styled.div`
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin-bottom: 1rem;
+`
+

@@ -73,7 +73,7 @@ export const InputDistrict = styled(BaseInput)`
     width: 12.5rem;
 `
 export const InputCity = styled(BaseInput)`
-    width: 17.25rem;
+    width: 100%;
 `
 export const InputUF = styled(BaseInput)`
     width: 3.75rem;

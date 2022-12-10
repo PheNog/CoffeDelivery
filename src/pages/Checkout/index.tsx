@@ -1,14 +1,18 @@
 import { Bank, CreditCard, Money } from "phosphor-react";
 import { FormCheckout } from "./components/FormCheckout";
-import { 
-    CartComponent, 
-    CheckoutMasterContainer, 
-    ContainerLabels, 
-    FormAndPaymentContainer, 
-    InputHidden,  
-    LabelPayment, 
-    PaymentMethodContainer, 
-    TitlesCheckout 
+import { ItemCart } from "./components/ItemCart/ItemCart";
+import { PaymentMethods } from "./components/PaymenthsMethods";
+import {
+    ButtonConfirmOrder,
+    CardCartContainer,
+    CartComponentContainer,
+    CheckoutMasterContainer,
+    ContainerPaymentConfirm,
+    FormAndPaymentContainer,
+    ItemsCartContainer,
+    RowFinalTotal,
+    RowTotalItensEntrega,
+    TitlesCheckout
 } from "./styles";
 
 export function Checkout() {
@@ -17,45 +21,32 @@ export function Checkout() {
             <FormAndPaymentContainer>
                 <TitlesCheckout>Complete seu pedido</TitlesCheckout>
                 <FormCheckout />
-                <PaymentMethodContainer>
-                    <ContainerLabels>
-                        <LabelPayment htmlFor="payment1">
-                            <CreditCard 
-                                size={16}
-                            />
-                            CARTÃO DE CRÉDITO
-                        </LabelPayment>
-                        <InputHidden
-                            id="payment1"
-                            type='checkbox'
-                        />
-                        <LabelPayment htmlFor="payment2">
-                        <Bank 
-                                size={16}
-                            />
-                            CARTÃO DE DÉBITO
-                        </LabelPayment>
-                        <InputHidden
-                            id="payment2"
-                            type='checkbox'
-                        />
-                        <LabelPayment htmlFor="payment3">
-                        <Money
-                                size={16}
-                            />
-                            DINHEIRO
-                        </LabelPayment>
-                        <InputHidden
-                            id="payment3"
-                            type='checkbox'
-                        />
-                    </ContainerLabels>
-                </PaymentMethodContainer>
+                <PaymentMethods />
             </FormAndPaymentContainer>
-            <CartComponent>
+            <CartComponentContainer>
                 <TitlesCheckout>Cafés selecionados</TitlesCheckout>
-
-            </CartComponent>
+                <CardCartContainer>
+                    <ItemsCartContainer>
+                        <ItemCart />
+                        <ItemCart />
+                    </ItemsCartContainer>
+                    <ContainerPaymentConfirm>
+                        <RowTotalItensEntrega>
+                            <div>Total de itens</div>
+                            <div>R$ 29,70</div>
+                        </RowTotalItensEntrega>
+                        <RowTotalItensEntrega>
+                            <div>Entrega</div>
+                            <div>R$ 3,50</div>
+                        </RowTotalItensEntrega>
+                        <RowFinalTotal>
+                            <div>Total</div>
+                            <div>R$ 33,20</div>
+                        </RowFinalTotal>
+                    </ContainerPaymentConfirm>
+                    <ButtonConfirmOrder>CONFIRMAR PEDIDO</ButtonConfirmOrder>
+                </CardCartContainer>
+            </CartComponentContainer>
         </CheckoutMasterContainer>
     )
 }
