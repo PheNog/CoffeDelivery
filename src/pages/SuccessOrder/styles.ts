@@ -18,36 +18,22 @@ export const ContainerTitleSubOrder = styled.div`
 `
 
 export const TitleConfirmOrder = styled.label`
-    /* Title/Title L */
-
-font-family: 'Baloo 2';
-font-style: normal;
-font-weight: 800;
-font-size: 32px;
-line-height: 130%;
-/* identical to box height, or 42px */
-
-
-/* Brand / Yellow Dark */
-
-color: #C47F17;
+    font-family: 'Baloo 2';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 130%;
+    color: ${(props) => props.theme["yellow-dark"]};
 `
 
 export const SubTitleConfirmOrder = styled.label`
-    /* Text/Regular L */
-
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
-font-size: 20px;
-line-height: 130%;
-/* identical to box height, or 26px */
-
-
-/* Base/Subtitle */
-
-color: #403937;
-font-stretch: 100;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 130%;
+    color: ${(props) => props.theme["base-subtitle"]};
+    font-stretch: 100;
 `
 
 export const ContainerOrderData = styled.div`
@@ -76,17 +62,11 @@ export const ContainerTitleData = styled.div`
 `
 
 export const ContainerLabelRowCep = styled.div`
-
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 130%;
-/* or 21px */
-
-
-/* Base/Text */
-
-color: #574F4D;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: ${(props) => props.theme["base-text"]};
 `
 
 export const LabelAddressBold = styled.label`
@@ -94,45 +74,31 @@ export const LabelAddressBold = styled.label`
     font-weight: 700;
     font-size: 16px;
     line-height: 130%;
-    /* or 21px */
-
-
-    /* Base/Text */
-
-    color: #574F4D;
+    color: ${(props) => props.theme["base-text"]};
 `
 
 export const LabelCityData = styled.label`
         font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 130%;
-    /* or 21px */
-
-
-    /* Base/Text */
-
-    color: #574F4D;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 130%;
+        color: ${(props) => props.theme["base-text"]};
 `
 
 export const LabelComumText = styled.label`
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 130%;
-/* or 21px */
-
-
-/* Base/Text */
-
-color: #574F4D;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: ${(props) => props.theme["base-text"]};
 `
 export const LabelBoldText = styled.label`
-        font-style: normal;
+    font-style: normal;
     font-weight: 700;
     font-size: 16px;
     line-height: 130%;
-    color: #574F4D;
+    color: ${(props) => props.theme["base-text"]};
+
 `
 export const ImageOrderSuccess = styled.img`
 
@@ -154,23 +120,21 @@ export const GradientBox = styled.div`
     align-items: center;
     margin-top: 2.5rem;
     margin-bottom: 0.8rem;
-
     width: 100%;
     position: relative;
     box-sizing: border-box;
-
     background: ${props => props.theme["background"]};
     background-clip: padding-box; 
     border: solid 1px transparent; 
     border-radius: 6px 36px;
-
+//Criando uma borda com gradiente usando esse container com essa props before
     &:before {
     content: '';
     position: absolute;
     top: 0; right: 0; bottom: 0; left: 0;
     z-index: -1;
-    margin: -1px; /* !importanté */
-    border-radius: inherit; /* !importanté */
+    margin: -1px;
+    border-radius: inherit;
     background: linear-gradient(102.89deg, #DBAC2C 2.61%, #8047F8 98.76%);
 }
 `

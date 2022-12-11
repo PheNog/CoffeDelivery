@@ -1,8 +1,11 @@
 import { Trash } from "phosphor-react";
-import { dataCoffesFlavor } from "../../../../components/MenuCoffes/dataCoffes";
+import { useContext } from "react";
+import { CoffeContext } from "../../../../contexts/CoffesContext";
 import { ButtonRemoveCart, ContainerItemCart, ImageCoffeCart, InputNumberCart, LabelNameItemCart, LabelPriceCart, NameInputContainer, RowInputButton, RowNamePrice } from "./styles";
 
 export function ItemCart() {
+    const { dataCoffesFlavor } = useContext(CoffeContext)
+
     return (
         <ContainerItemCart>
             <ImageCoffeCart

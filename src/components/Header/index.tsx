@@ -1,21 +1,26 @@
-import { CartAndLocation, HeaderContainer, ItemsContainer } from "./styles"
+import { BoxLocation, ButtonCartWithLabel, CartAndLocation, HeaderContainer, ItemsContainer, LogoHeader } from "./styles"
 import logoCoffe from "../../assets/coffe-logo.png"
-import location from "../../assets/Location.png"
-import { ShoppingCart } from "phosphor-react"
+import { MapPin, ShoppingCart } from "phosphor-react"
 
 export const Header = () => {
     return (
         <HeaderContainer>
             <ItemsContainer>
-                <img src={logoCoffe} />
+                <LogoHeader src={logoCoffe} />
                 <CartAndLocation>
-                    <img src={location} />
-                    <button>
+                    <BoxLocation>
+                        <MapPin
+                        weight='fill'
+                        size={22} />
+
+                        São Paulo, SP
+                    </BoxLocation>
+                    <ButtonCartWithLabel>
                         <ShoppingCart
                             size={18}
-                            weight="fill" 
+                            weight="fill"
                         />
-                    </button>
+                    </ButtonCartWithLabel>
                 </CartAndLocation>
             </ItemsContainer>
         </HeaderContainer>

@@ -16,6 +16,7 @@ import {
 } from "./styles";
 import { ShoppingCart } from "phosphor-react";
 
+
 interface MenuCoffesProps {
     id: string
     coffeImage: string
@@ -23,6 +24,7 @@ interface MenuCoffesProps {
     coffeFlavorName: string
     coffeFlavorDescription: string
     coffePrice: number
+    itemQuantity: number
 }
 
 export function MenuCoffes({
@@ -31,7 +33,8 @@ export function MenuCoffes({
     coffeImage,
     coffeFlavorName,
     coffeFlavorDescription,
-    coffePrice
+    coffePrice,
+    itemQuantity
 }: MenuCoffesProps) {
     
     return (
@@ -42,7 +45,9 @@ export function MenuCoffes({
                     {
                         coffeType.map((type) => {
                             return (
-                                <CoffeTypeLabel>
+                                <CoffeTypeLabel
+                                key={type}
+                                >
                                     {type}
                                 </CoffeTypeLabel>
                             )
@@ -65,8 +70,11 @@ export function MenuCoffes({
                 </PriceLabel>
                 <CountAndButtonContainer>
                     <CountItem
+                        id='itemsAmount'
                         type='number'
-                        placeholder="1"
+                        step={1}
+                        min={1}
+                        max={10}
                     >
                     </CountItem>
                     <ButtonCart>

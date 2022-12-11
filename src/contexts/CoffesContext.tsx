@@ -12,6 +12,16 @@ import coffeImg11 from './assets/Type=Cubano.svg'
 import coffeImg12 from './assets/Type=Havaiano.svg'
 import coffeImg13 from './assets/Type=Árabe.svg'
 import coffeImg14 from './assets/Type=Irlandês.svg'
+import { createContext, ReactNode, useState } from 'react'
+
+
+interface CoffesContextType {
+    menuItems: CoffeDataProps[]
+    addItemToCart: (data: CoffeDataProps) => void
+
+}
+
+export const CoffeContext = createContext({} as CoffesContextType)
 
 
 
@@ -25,7 +35,11 @@ export interface CoffeDataProps {
     coffeImage: string
 }
 
-export const dataCoffesFlavor: CoffeDataProps[] = [
+interface CoffeContextProviderProps {
+    children: ReactNode
+}
+
+const dataCoffesFlavor: CoffeDataProps[] = [
     {
         id: "1",
         coffeFlavorName: 'Expresso Tradicional',
@@ -43,7 +57,7 @@ export const dataCoffesFlavor: CoffeDataProps[] = [
         coffePrice: 9.90,
         itemQuantity: 1,
         coffeImage: coffeImg2
-        
+
     },
     {
         id: "3",
@@ -154,3 +168,24 @@ export const dataCoffesFlavor: CoffeDataProps[] = [
         coffeImage: coffeImg14
     },
 ]
+
+export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
+
+    const [cartItems, setCartItems] = useState<Array<CoffeDataProps>>([])
+    const [menuItems, setMenuItems] = useState<Array<CoffeDataProps>>(dataCoffesFlavor)
+
+    function addItemToCart(item: CoffeDataProps){
+        setCartItems((state) =>[...state, item] )
+    }
+
+    return (
+        <CoffeContext.Provider value={
+            {
+                menuItems,
+                addItemToCart
+            }
+        }>
+            {children}
+        </CoffeContext.Provider>
+    )
+}
