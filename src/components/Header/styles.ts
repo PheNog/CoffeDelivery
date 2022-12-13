@@ -33,6 +33,7 @@ export const LogoHeader = styled.img`
     width: 85px;
     height: 40px;
 `
+
 export const ButtonCartWithLabel = styled.button`
         width: 38px;
         height: 38px;
@@ -67,4 +68,19 @@ export const BoxLocation = styled.div`
         color: ${props => props.theme.purple};
     }
 `
+export const LabelTotalItems = styled.label`
+    border-radius: 50%;
+    background: ${props => props.theme["yellow-dark"]};
+    position: absolute;
+    top: 4.5%;
+    width: 16px;
+    height: 16px;
 
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 130%;
+    align-items: center;
+    justify-content: center;
+`

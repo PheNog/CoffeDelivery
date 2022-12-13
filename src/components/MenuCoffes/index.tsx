@@ -4,7 +4,6 @@ import {
     CoffeFlavorName,
     CoffeTypeLabel,
     CountAndButtonContainer,
-    CountItem,
     ImageLabelTitleSubtitleContainer,
     ImageMenuItem,
     PriceCountCartContainer,
@@ -12,41 +11,50 @@ import {
     R$Label,
     CoffeFlavorDescription,
     ContainerLabelsCoffeType,
+    InputCart,
+    InputAndButtonsContainer,
 
 } from "./styles";
-import { ShoppingCart } from "phosphor-react";
+import { Minus, Plus, ShoppingCart } from "phosphor-react";
+import { CoffeContext, CoffeDataProps } from "../../contexts/CoffesContext";
+import { useContext, useState } from "react";
 
 
 interface MenuCoffesProps {
-    id: string
-    coffeImage: string
-    coffeType: string[]
-    coffeFlavorName: string
-    coffeFlavorDescription: string
-    coffePrice: number
-    itemQuantity: number
+    coffeFlavor: CoffeDataProps
 }
 
 export function MenuCoffes({
-    id,
-    coffeType,
-    coffeImage,
-    coffeFlavorName,
-    coffeFlavorDescription,
-    coffePrice,
-    itemQuantity
+    coffeFlavor
 }: MenuCoffesProps) {
-    
+    const { addItemToCart } = useContext(CoffeContext)
+
+    const [amountItem, setAmountItem] = useState(1)
+    coffeFlavor.itemQuantity = amountItem
+
+    function handleIncrement() {
+        setAmountItem(state => state + 1)
+    }
+
+    function handleDecrement() {
+        setAmountItem(state => state - 1)
+    }
+
+    function handleAddItemToCart() {
+        addItemToCart(coffeFlavor)
+    }
+
+
     return (
         <CardMenuContainer>
             <ImageLabelTitleSubtitleContainer>
-                <ImageMenuItem src={coffeImage} />
+                <ImageMenuItem src={coffeFlavor.coffeImage} />
                 <ContainerLabelsCoffeType>
                     {
-                        coffeType.map((type) => {
+                        coffeFlavor.coffeType.map((type) => {
                             return (
                                 <CoffeTypeLabel
-                                key={type}
+                                    key={type}
                                 >
                                     {type}
                                 </CoffeTypeLabel>
@@ -55,10 +63,10 @@ export function MenuCoffes({
                     }
                 </ContainerLabelsCoffeType>
                 <CoffeFlavorName>
-                    {coffeFlavorName}
+                    {coffeFlavor.coffeFlavorName}
                 </CoffeFlavorName>
                 <CoffeFlavorDescription>
-                    {coffeFlavorDescription}
+                    {coffeFlavor.coffeFlavorDescription}
                 </CoffeFlavorDescription>
             </ImageLabelTitleSubtitleContainer>
             <PriceCountCartContainer>
@@ -66,19 +74,34 @@ export function MenuCoffes({
                     <R$Label>
                         R$
                     </R$Label>
-                    {coffePrice.toString()}0
+                    {coffeFlavor.coffePrice.toString()}0
                 </PriceLabel>
                 <CountAndButtonContainer>
-                    <CountItem
-                        id='itemsAmount'
-                        type='number'
-                        step={1}
-                        min={1}
-                        max={10}
+                    <InputAndButtonsContainer>
+                        <button
+                            onClick={() => handleDecrement()}
+                            disabled={amountItem <= 1}>
+                            <Minus size={16} />
+                        </button>
+                        <InputCart
+                            id='itemsAmount'
+                            type='number'
+                            step={1}
+                            min={1}
+                            max={10}
+                            value={amountItem}
+                            readOnly
+                        />
+                        <button
+                            onClick={() => handleIncrement()}
+                            >
+                            <Plus size={16} />
+                        </button>
+                    </InputAndButtonsContainer>
+                    <ButtonCart
+                        onClick={handleAddItemToCart}
                     >
-                    </CountItem>
-                    <ButtonCart>
-                        <ShoppingCart size={26} weight="fill"  color='white' />
+                        <ShoppingCart size={26} weight="fill" color='white' />
                     </ButtonCart>
                 </CountAndButtonContainer>
             </PriceCountCartContainer>

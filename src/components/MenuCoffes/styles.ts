@@ -110,20 +110,18 @@ export const CountAndButtonContainer = styled.div`
     align-items: center;
 `
 
-export const CountItem = styled.input`
+export const InputCart = styled.input`
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 8px;
+    width: 1.75rem;
+height: 1.25rem;
     gap: 4px;
-    width: 72px;
-    height: 38px;
     background: #E6E5E5;
     color: black;
-    border-radius: 6px;
     border: 0;
-text-align: center;
+    text-align: center;
 `
 export const ButtonCart = styled.button`
     display:flex;
@@ -143,6 +141,36 @@ export const ContainerLabelsCoffeType = styled.div`
     justify-content: center;
     align-items: center;
     gap: 0.25rem;
+`
+export const InputAndButtonsContainer = styled.div`
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 72px;
+    height: 38px;
+    border-radius: 6px;
+
+    background: ${props => props.theme['base-button']};
+    button {
+    
+        height: 100%;
+        border: none;
+    background: ${props => props.theme['base-button']};
+    z-index: 1;
+    }
+    input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+    svg {
+        :hover {
+            color: ${props => props.theme['purple-dark']};
+        }
+        color: ${props => props.theme['purple']};
+        padding: 0rem;
+    }
 `
 
 

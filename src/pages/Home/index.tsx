@@ -85,17 +85,11 @@ export function Home() {
 
                     <CoffesCatalogContainer>
                         {menuItems.map((coffeFlavor) => {
-                            
+
                             return (
                                 <MenuCoffes
                                     key={coffeFlavor.id}
-                                    id={coffeFlavor.id}
-                                    coffeType={coffeFlavor.coffeType}
-                                    coffeFlavorName={coffeFlavor.coffeFlavorName}
-                                    coffeFlavorDescription={coffeFlavor.coffeFlavorDescription}
-                                    coffePrice={coffeFlavor.coffePrice}
-                                    coffeImage={coffeFlavor.coffeImage}
-                                    itemQuantity={coffeFlavor.itemQuantity}
+                                    coffeFlavor={coffeFlavor}
                                 />
                             )
                         })

@@ -93,3 +93,52 @@ export const NameInputContainer = styled.button`
     width: 100%;
     margin-left: 1.25rem;
 `
+
+export const InputAndButtonsContainer = styled.div`
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 4.5rem;
+    height: 2rem;
+    border-radius: 6px;
+
+    background: ${props => props.theme['base-button']};
+    button {
+    
+        height: 100%;
+        border: none;
+    background: ${props => props.theme['base-button']};
+    z-index: 1;
+    }
+    input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+    svg {
+        :hover {
+            color: ${props => props.theme['purple-dark']};
+        }
+        color: ${props => props.theme['purple']};
+        padding: 0rem;
+    }
+
+`
+
+export const InputCart = styled.input`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 1.75rem;
+height: auto;
+    gap: 4px;
+    background: #E6E5E5;
+    color: black;
+    border: 0;
+    text-align: center;
+    :focus{
+        border: transparent;
+    }
+`

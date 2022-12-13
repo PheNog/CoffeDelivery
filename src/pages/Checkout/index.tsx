@@ -1,4 +1,6 @@
 import { Bank, CreditCard, Money } from "phosphor-react";
+import { useContext, useEffect, useState } from "react";
+import { CoffeContext } from "../../contexts/CoffesContext";
 import { FormCheckout } from "./components/FormCheckout";
 import { ItemCart } from "./components/ItemCart/ItemCart";
 import { PaymentMethods } from "./components/PaymenthsMethods";
@@ -15,7 +17,33 @@ import {
     TitlesCheckout
 } from "./styles";
 
+interface TotalItemsCart {
+    totalCart: number;
+    totalCartFormatted?: string;
+    totalCartFormattedWithDelivery?: string;
+}
+
 export function Checkout() {
+    const { cartItems } = useContext(CoffeContext)
+
+    const [totalCartItems, setTotalCartItems] = useState<TotalItemsCart>()
+
+    useEffect(() => {
+
+        if (cartItems.length > 0) {
+            const totalCart = cartItems.map(el => el.totalItems).reduce((total, item) => total + item)
+            var fretePlusTotal = totalCart + 3.50
+            setTotalCartItems({
+                totalCart: totalCart,
+                totalCartFormatted: totalCart.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+                totalCartFormattedWithDelivery: fretePlusTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+            })
+        }
+
+
+    }, [cartItems, totalCartItems])
+
+
     return (
         <CheckoutMasterContainer>
             <FormAndPaymentContainer>
@@ -26,14 +54,23 @@ export function Checkout() {
             <CartComponentContainer>
                 <TitlesCheckout>Cafés selecionados</TitlesCheckout>
                 <CardCartContainer>
-                    <ItemsCartContainer>
-                        <ItemCart />
-                        <ItemCart />
+                    <ItemsCartContainer
+                    >
+                        {cartItems.map((item) => {
+                            return (
+                                <ItemCart
+                                    key={item.id}
+                                    item={item}
+                                />
+                            )
+                        })
+
+                        }
                     </ItemsCartContainer>
                     <ContainerPaymentConfirm>
                         <RowTotalItensEntrega>
                             <div>Total de itens</div>
-                            <div>R$ 29,70</div>
+                            <div>{totalCartItems?.totalCartFormatted}</div>
                         </RowTotalItensEntrega>
                         <RowTotalItensEntrega>
                             <div>Entrega</div>
@@ -41,7 +78,7 @@ export function Checkout() {
                         </RowTotalItensEntrega>
                         <RowFinalTotal>
                             <div>Total</div>
-                            <div>R$ 33,20</div>
+                            <div>{totalCartItems?.totalCartFormattedWithDelivery}</div>
                         </RowFinalTotal>
                     </ContainerPaymentConfirm>
                     <ButtonConfirmOrder>CONFIRMAR PEDIDO</ButtonConfirmOrder>
