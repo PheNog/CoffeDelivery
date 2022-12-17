@@ -1,7 +1,23 @@
-import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
+import { Bank, CreditCard, CurrencyDollar, Money } from "phosphor-react";
+import { useContext } from "react";
+import { CoffeContext } from "../../../../contexts/CoffesContext";
 import { ContainerLabels, InfoPayments, InputHidden, LabelPayment, PaymentMethodContainer, TextAndIconContainer, TitleAndInfoContainer, TitlePayments } from "./styles";
 
 export function PaymentMethods() {
+
+    const { selectPayment } = useContext(CoffeContext)
+
+    const optionsArrayNL = (document.getElementsByName('pagamento'))
+
+    async function handleSelectPaymentMethod() {
+        const optionsArray = Array.prototype.slice.call(optionsArrayNL);
+        const optionChecked = optionsArray.filter((option: any) => option.checked);
+        if(optionChecked.length > 0){
+            const optionPaymentSelected = optionChecked[0].value
+            selectPayment(optionPaymentSelected)
+        }
+    }
+
     return (
         <PaymentMethodContainer>
             <TextAndIconContainer>
@@ -12,11 +28,14 @@ export function PaymentMethods() {
                 </TitleAndInfoContainer>
             </TextAndIconContainer>
             <ContainerLabels>
+
                 <InputHidden
                     id="payment1"
-                    type='checkbox'
+                    type='radio'
+                    name='pagamento'
+                    value='Cartão de Crédito'
                 />
-                <LabelPayment htmlFor="payment1">
+                <LabelPayment onClick={handleSelectPaymentMethod} htmlFor="payment1">
                     <CreditCard
                         size={16}
                     />
@@ -24,9 +43,12 @@ export function PaymentMethods() {
                 </LabelPayment>
                 <InputHidden
                     id="payment2"
-                    type='checkbox'
+                    type='radio'
+                    name='pagamento'
+                    value='Cartão de Débito'
+                    defaultChecked
                 />
-                <LabelPayment htmlFor="payment2">
+                <LabelPayment onClick={handleSelectPaymentMethod} htmlFor="payment2">
                     <Bank
                         size={16}
                     />
@@ -34,9 +56,12 @@ export function PaymentMethods() {
                 </LabelPayment>
                 <InputHidden
                     id="payment3"
-                    type='checkbox'
+                    type='radio'
+                    name='pagamento'
+                    value='Dinheiro'
+
                 />
-                <LabelPayment htmlFor="payment3">
+                <LabelPayment onClick={handleSelectPaymentMethod} htmlFor="payment3">
                     <Money
                         size={16}
                     />

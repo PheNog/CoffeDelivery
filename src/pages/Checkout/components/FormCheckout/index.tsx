@@ -1,22 +1,26 @@
-import { 
-    FormContainer, 
-    InfoForm, 
-    InputAddress, 
-    InputCEP, 
-    InputCity, 
-    InputComplement, 
-    InputDistrict, 
-    InputNumber, 
-    InputsContainerMaster, 
-    InputUF, 
-    RowInputs, 
-    TextAndIconContainer, 
-    TitleAndInfoContainer, 
-    TitleForm 
+import {
+    FormContainer,
+    InfoForm,
+    InputAddress,
+    InputCEP,
+    InputCity,
+    InputComplement,
+    InputDistrict,
+    InputNumber,
+    InputsContainerMaster,
+    InputUF,
+    RowInputs,
+    TextAndIconContainer,
+    TitleAndInfoContainer,
+    TitleForm
 } from "./styles";
 import { MapPinLine } from 'phosphor-react'
+import { useFormContext } from "react-hook-form";
 
 export function FormCheckout() {
+
+    const { register } = useFormContext()
+
     return (
         <FormContainer>
             <TextAndIconContainer>
@@ -27,16 +31,44 @@ export function FormCheckout() {
                 </TitleAndInfoContainer>
             </TextAndIconContainer>
             <InputsContainerMaster>
-                <InputCEP placeholder="CEP" />
-                <InputAddress placeholder="Rua" />
+                <InputCEP
+                    placeholder="CEP"
+                    id='cep'
+                    {...register('cep')}
+                />
+                <InputAddress
+                    placeholder="Rua"
+                    id='address'
+                    {...register('address')}
+                />
                 <RowInputs>
-                    <InputNumber placeholder="Número" />
-                    <InputComplement placeholder="Complemento" />
+                    <InputNumber
+                        placeholder="Número"
+                        id='number'
+                        {...register('number')}
+                    />
+                    <InputComplement
+                        placeholder="Complemento"
+                        id='complement'
+                        {...register('complement')}
+                    />
                 </RowInputs>
                 <RowInputs>
-                    <InputDistrict placeholder="Bairro"/>
-                    <InputCity placeholder="Cidade" />
-                    <InputUF placeholder="UF" />
+                    <InputDistrict
+                        placeholder="Bairro"
+                        id='district'
+                        {...register('district')}
+                    />
+                    <InputCity
+                        placeholder="Cidade"
+                        id='city'
+                        {...register('city')}
+                    />
+                    <InputUF
+                        placeholder="UF"
+                        id='UF'
+                        {...register('UF')}
+                    />
                 </RowInputs>
             </InputsContainerMaster>
         </FormContainer>

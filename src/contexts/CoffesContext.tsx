@@ -13,6 +13,7 @@ import coffeImg12 from './assets/Type=Havaiano.svg'
 import coffeImg13 from './assets/Type=Árabe.svg'
 import coffeImg14 from './assets/Type=Irlandês.svg'
 import { createContext, ReactNode, useState } from 'react'
+import { TotalItemsCart } from '../pages/Checkout'
 
 
 interface CoffesContextType {
@@ -20,6 +21,8 @@ interface CoffesContextType {
     addItemToCart: (data: CoffeDataProps) => void
     removeItemOfCart: (data: CoffeDataProps) => void
     cartItems: CoffeDataProps[]
+    updateAmount: (id: string, type: "increment" | "decrement") => void
+    selectPayment: (option: string) => void
 }
 
 export const CoffeContext = createContext({} as CoffesContextType)
@@ -34,7 +37,6 @@ export interface CoffeDataProps {
     coffePrice: number
     itemQuantity: number
     coffeImage: string
-    totalItems: number
 }
 
 interface CoffeContextProviderProps {
@@ -49,8 +51,7 @@ const dataCoffesFlavor: CoffeDataProps[] = [
         coffeFlavorDescription: 'O tradicional café feito com água quente e grãos moídos',
         coffePrice: 9.90,
         itemQuantity: 1,
-        coffeImage: coffeImg1,
-        totalItems: 9.90
+        coffeImage: coffeImg1
     },
     {
         id: "2",
@@ -59,8 +60,7 @@ const dataCoffesFlavor: CoffeDataProps[] = [
         coffeFlavorDescription: 'Expresso diluído, menos intenso que o tradicional',
         coffePrice: 9.90,
         itemQuantity: 1,
-        coffeImage: coffeImg2,
-        totalItems: 9.90
+        coffeImage: coffeImg2
     },
     {
         id: "3",
@@ -69,8 +69,7 @@ const dataCoffesFlavor: CoffeDataProps[] = [
         coffeFlavorDescription: 'Café expresso tradicional com espuma cremosa',
         coffePrice: 9.90,
         itemQuantity: 1,
-        coffeImage: coffeImg3,
-        totalItems: 9.90
+        coffeImage: coffeImg3
     },
     {
         id: "4",
@@ -79,8 +78,7 @@ const dataCoffesFlavor: CoffeDataProps[] = [
         coffeFlavorDescription: 'Bebida preparada com café expresso e cubos de gelo',
         coffePrice: 9.90,
         itemQuantity: 1,
-        coffeImage: coffeImg4,
-        totalItems: 9.90
+        coffeImage: coffeImg4
     },
     {
         id: "5",
@@ -89,8 +87,7 @@ const dataCoffesFlavor: CoffeDataProps[] = [
         coffeFlavorDescription: 'Meio a meio de expresso tradicional com leite vaporizado',
         coffePrice: 9.90,
         itemQuantity: 1,
-        coffeImage: coffeImg5,
-        totalItems: 9.90
+        coffeImage: coffeImg5
     },
     {
         id: "6",
@@ -99,8 +96,7 @@ const dataCoffesFlavor: CoffeDataProps[] = [
         coffeFlavorDescription: 'Uma dose de café expresso com o dobro de leite e espuma cremosa',
         coffePrice: 9.90,
         itemQuantity: 1,
-        coffeImage: coffeImg6,
-        totalItems: 9.90
+        coffeImage: coffeImg6
     },
     {
         id: "7",
@@ -109,8 +105,7 @@ const dataCoffesFlavor: CoffeDataProps[] = [
         coffeFlavorDescription: 'Bebida com canela feita de doses iguais de café, leite e espuma',
         coffePrice: 9.90,
         itemQuantity: 1,
-        coffeImage: coffeImg7,
-        totalItems: 9.90
+        coffeImage: coffeImg7
     },
     {
         id: "8",
@@ -119,8 +114,7 @@ const dataCoffesFlavor: CoffeDataProps[] = [
         coffeFlavorDescription: 'Café expresso misturado com um pouco de leite quente e espuma',
         coffePrice: 9.90,
         itemQuantity: 1,
-        coffeImage: coffeImg8,
-        totalItems: 9.90
+        coffeImage: coffeImg8
     },
     {
         id: "9",
@@ -129,8 +123,7 @@ const dataCoffesFlavor: CoffeDataProps[] = [
         coffeFlavorDescription: 'Café expresso com calda de chocolate, pouco leite e espuma',
         coffePrice: 9.90,
         itemQuantity: 1,
-        coffeImage: coffeImg9,
-        totalItems: 9.90
+        coffeImage: coffeImg9
     },
     {
         id: "10",
@@ -139,8 +132,7 @@ const dataCoffesFlavor: CoffeDataProps[] = [
         coffeFlavorDescription: 'Bebida feita com chocolate dissolvido no leite quente e café',
         coffePrice: 9.90,
         itemQuantity: 1,
-        coffeImage: coffeImg1,
-        totalItems: 9.90
+        coffeImage: coffeImg10
     },
     {
         id: "11",
@@ -149,8 +141,7 @@ const dataCoffesFlavor: CoffeDataProps[] = [
         coffeFlavorDescription: 'Drink gelado de café expresso com rum, creme de leite e hortelã',
         coffePrice: 9.90,
         itemQuantity: 1,
-        coffeImage: coffeImg1,
-        totalItems: 9.90
+        coffeImage: coffeImg11
     },
     {
         id: "12",
@@ -159,8 +150,7 @@ const dataCoffesFlavor: CoffeDataProps[] = [
         coffeFlavorDescription: 'Bebida adocicada preparada com café e leite de coco',
         coffePrice: 9.90,
         itemQuantity: 1,
-        coffeImage: coffeImg1,
-        totalItems: 9.90
+        coffeImage: coffeImg12
     },
     {
         id: "13",
@@ -169,8 +159,7 @@ const dataCoffesFlavor: CoffeDataProps[] = [
         coffeFlavorDescription: 'Bebida preparada com grãos de café árabe e especiarias',
         coffePrice: 9.90,
         itemQuantity: 1,
-        coffeImage: coffeImg1,
-        totalItems: 9.90
+        coffeImage: coffeImg13
     },
     {
         id: "14",
@@ -179,13 +168,12 @@ const dataCoffesFlavor: CoffeDataProps[] = [
         coffeFlavorDescription: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',
         coffePrice: 9.90,
         itemQuantity: 1,
-        coffeImage: coffeImg1,
-        totalItems: 9.90
+        coffeImage: coffeImg14
     },
 ]
 
 export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
-
+    const [paymentSelected, setPaymentSelected] = useState('')
     const [cartItems, setCartItems] = useState<Array<CoffeDataProps>>([])
     const [menuItems, setMenuItems] = useState<Array<CoffeDataProps>>(dataCoffesFlavor)
 
@@ -200,11 +188,39 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
         setCartItems(copyCart)
     }
 
+
+    function selectPayment(option: string){
+        setPaymentSelected(state => state = option)
+        console.log(paymentSelected)
+    }
+
     function removeItemOfCart(coffeItem: CoffeDataProps) {
         const copyCart = [...cartItems];
         const filteredCart = copyCart.filter(cartItem => cartItem.id !== coffeItem.id);
 
         setCartItems(filteredCart)
+    }
+
+    function updateAmount(
+        id: string,
+        type: string
+    ) {
+        const copyCart = [...cartItems];
+        const productIndex = copyCart.findIndex(product => product.id === id);
+
+        if (productIndex >= 0) {
+            const item = copyCart[productIndex];
+            copyCart[productIndex].itemQuantity =
+                type === "increment" ? item.itemQuantity + 1 : item.itemQuantity - 1;
+        } else {
+            throw Error();
+        }
+
+        setCartItems(copyCart);
+    }
+
+    function clearCart() {
+        setCartItems([]);
     }
 
 
@@ -214,7 +230,9 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
                 menuItems,
                 addItemToCart,
                 removeItemOfCart,
-                cartItems
+                cartItems,
+                updateAmount,
+                selectPayment
             }
         }>
             {children}

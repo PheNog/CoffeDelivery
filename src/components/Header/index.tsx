@@ -21,15 +21,15 @@ export const Header = () => {
 
                         São Paulo, SP
                     </BoxLocation>
-                    <ButtonCartWithLabel>
-                        <NavLink to='/checkout'>
+                    <NavLink to='/checkout'>
+                        <ButtonCartWithLabel>
                             <ShoppingCart
                                 size={18}
                                 weight="fill"
                             />
-                        </NavLink>
                             <LabelTotalItems>{cartItems ? cartItems.length : 0}</LabelTotalItems>
-                    </ButtonCartWithLabel>
+                        </ButtonCartWithLabel>
+                    </NavLink>
                 </CartAndLocation>
             </ItemsContainer>
         </HeaderContainer>

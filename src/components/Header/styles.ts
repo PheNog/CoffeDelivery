@@ -43,6 +43,12 @@ export const ButtonCartWithLabel = styled.button`
         svg {
             color: ${(props) => props.theme["yellow-dark"]};
         }
+        cursor: pointer;
+        :hover{
+            outline:0;
+        box-shadow: 0 0 0 2px ${(props) => props.theme['yellow-dark']};
+
+        }
 `
 export const BoxLocation = styled.div`
     display: flex;
@@ -72,7 +78,7 @@ export const LabelTotalItems = styled.label`
     border-radius: 50%;
     background: ${props => props.theme["yellow-dark"]};
     position: absolute;
-    top: 4.5%;
+    top: 9.5%;
     width: 16px;
     height: 16px;
 

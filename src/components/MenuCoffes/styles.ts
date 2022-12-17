@@ -122,6 +122,10 @@ height: 1.25rem;
     color: black;
     border: 0;
     text-align: center;
+    :focus {
+        outline:0;
+        box-shadow: 0 0 0 transparent;
+    }
 `
 export const ButtonCart = styled.button`
     display:flex;

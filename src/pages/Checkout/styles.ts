@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const CheckoutMasterContainer = styled.div`
+export const CheckoutMasterContainer = styled.form`
     display: flex;
-    justify-content:center;
+    justify-content: center;
     width: 100%;
     gap: 2rem;
     max-width: 1360px;

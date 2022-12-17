@@ -1,33 +1,27 @@
 import { Minus, Plus, Trash } from "phosphor-react";
 import { useContext, useState } from "react";
 import { CoffeContext, CoffeDataProps } from "../../../../contexts/CoffesContext";
+import { toBrlPt } from "../../../../utils/methods";
 import { ButtonRemoveCart, ContainerItemCart, ImageCoffeCart, InputAndButtonsContainer, InputCart, InputNumberCart, LabelNameItemCart, LabelPriceCart, NameInputContainer, RowInputButton, RowNamePrice } from "./styles";
 
 interface ItemCartProps {
     item: CoffeDataProps
 }
 
+
 export function ItemCart({ item }: ItemCartProps) {
-    const { removeItemOfCart, cartItems } = useContext(CoffeContext)
-
-    const [amountItem, setAmountItem] = useState(item.itemQuantity)
-
+    const { removeItemOfCart, updateAmount } = useContext(CoffeContext)
 
     function handleRemoveItemOfCart() {
         removeItemOfCart(item)
     }
 
-    function handleIncrement() {
-        setAmountItem(state => state + 1)
+    function handleUpdateAmount(
+        id:string, 
+        type:"increment" | "decrement"
+    ) {
+        updateAmount(id, type)
     }
-
-    function handleDecrement() {
-        setAmountItem(state => state - 1)
-    }
-
-    item.itemQuantity = amountItem
-    item.totalItems = item.itemQuantity * item.coffePrice
-
 
     return (
         <ContainerItemCart>
@@ -37,13 +31,13 @@ export function ItemCart({ item }: ItemCartProps) {
             <NameInputContainer>
                 <RowNamePrice>
                     <LabelNameItemCart>{item.coffeFlavorName}</LabelNameItemCart>
-                    <LabelPriceCart>R$ {item.coffePrice}</LabelPriceCart>
+                    <LabelPriceCart>{toBrlPt(item.coffePrice * item.itemQuantity)}</LabelPriceCart>
                 </RowNamePrice>
                 <RowInputButton>
                     <InputAndButtonsContainer>
                         <button
-                            onClick={() => handleDecrement()}
-                            disabled={amountItem <= 1}
+                            onClick={() => handleUpdateAmount(item.id, 'decrement')}
+                            disabled={item.itemQuantity <= 1}
                         >
                             <Minus size={16} />
                         </button>
@@ -53,12 +47,12 @@ export function ItemCart({ item }: ItemCartProps) {
                             step={1}
                             min={1}
                             max={10}
-                            disabled={ amountItem >= 10}
                             value={item.itemQuantity}
                             readOnly
                         />
                         <button
-                            onClick={() => handleIncrement()}
+                            disabled={item.itemQuantity >= 10}
+                            onClick={() => handleUpdateAmount(item.id, 'increment')}
                         >
                             <Plus size={16} />
                         </button>

@@ -138,7 +138,8 @@ height: auto;
     color: black;
     border: 0;
     text-align: center;
-    :focus{
-        border: transparent;
+    :focus {
+        outline:0;
+        box-shadow: 0 0 0 transparent;
     }
 `
