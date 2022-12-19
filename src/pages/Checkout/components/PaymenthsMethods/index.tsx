@@ -7,15 +7,9 @@ export function PaymentMethods() {
 
     const { selectPayment } = useContext(CoffeContext)
 
-    const optionsArrayNL = (document.getElementsByName('pagamento'))
-
-    async function handleSelectPaymentMethod() {
-        const optionsArray = Array.prototype.slice.call(optionsArrayNL);
-        const optionChecked = optionsArray.filter((option: any) => option.checked);
-        if(optionChecked.length > 0){
-            const optionPaymentSelected = optionChecked[0].value
-            selectPayment(optionPaymentSelected)
-        }
+    function handleSelectPaymentMethod(option: string) {
+        selectPayment(option)
+        console.log('OPTIONS', option)
     }
 
     return (
@@ -28,14 +22,12 @@ export function PaymentMethods() {
                 </TitleAndInfoContainer>
             </TextAndIconContainer>
             <ContainerLabels>
-
                 <InputHidden
                     id="payment1"
                     type='radio'
                     name='pagamento'
-                    value='Cartão de Crédito'
                 />
-                <LabelPayment onClick={handleSelectPaymentMethod} htmlFor="payment1">
+                <LabelPayment onClick={()=> handleSelectPaymentMethod('Cartão de Crédito')} htmlFor="payment1">
                     <CreditCard
                         size={16}
                     />
@@ -45,10 +37,9 @@ export function PaymentMethods() {
                     id="payment2"
                     type='radio'
                     name='pagamento'
-                    value='Cartão de Débito'
                     defaultChecked
                 />
-                <LabelPayment onClick={handleSelectPaymentMethod} htmlFor="payment2">
+                <LabelPayment onClick={()=> handleSelectPaymentMethod('Cartão de Débito')} htmlFor="payment2">
                     <Bank
                         size={16}
                     />
@@ -58,10 +49,8 @@ export function PaymentMethods() {
                     id="payment3"
                     type='radio'
                     name='pagamento'
-                    value='Dinheiro'
-
                 />
-                <LabelPayment onClick={handleSelectPaymentMethod} htmlFor="payment3">
+                <LabelPayment onClick={()=> handleSelectPaymentMethod('Dinheiro')} htmlFor="payment3">
                     <Money
                         size={16}
                     />

@@ -12,7 +12,7 @@ import coffeImg11 from './assets/Type=Cubano.svg'
 import coffeImg12 from './assets/Type=Havaiano.svg'
 import coffeImg13 from './assets/Type=Árabe.svg'
 import coffeImg14 from './assets/Type=Irlandês.svg'
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, ReactNode, useEffect, useState } from 'react'
 import { TotalItemsCart } from '../pages/Checkout'
 
 
@@ -23,7 +23,12 @@ interface CoffesContextType {
     cartItems: CoffeDataProps[]
     updateAmount: (id: string, type: "increment" | "decrement") => void
     selectPayment: (option: string) => void
+    paymentSelected: string
+    sendOrder: (dataForm: CheckoutFormData) => void
+    order: OrderData
+
 }
+
 
 export const CoffeContext = createContext({} as CoffesContextType)
 
@@ -41,6 +46,16 @@ export interface CoffeDataProps {
 
 interface CoffeContextProviderProps {
     children: ReactNode
+}
+
+export interface OrderData{
+    address: string,
+    number: string,
+    city: string,
+    district: string,
+    UF: string,
+    paymentSelected: string
+    cart: CoffeDataProps[]
 }
 
 const dataCoffesFlavor: CoffeDataProps[] = [
@@ -171,11 +186,30 @@ const dataCoffesFlavor: CoffeDataProps[] = [
         coffeImage: coffeImg14
     },
 ]
+type CheckoutFormData = {
+    number: string;
+    cep: string;
+    address: string;
+    complement: string;
+    district: string;
+    city: string;
+    UF: string;
+}
 
 export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
-    const [paymentSelected, setPaymentSelected] = useState('')
+    const [paymentSelected, setPaymentSelected] = useState('Cartão de Débito')
     const [cartItems, setCartItems] = useState<Array<CoffeDataProps>>([])
     const [menuItems, setMenuItems] = useState<Array<CoffeDataProps>>(dataCoffesFlavor)
+    const [order, setOrder] = useState<OrderData>({
+        address: '',
+        number: '',
+        city: '',
+        district: '',
+        UF: '',
+        paymentSelected: paymentSelected,
+        cart: cartItems
+    })
+    
 
     function addItemToCart(coffeItem: CoffeDataProps) {
         const copyCart = [...cartItems];
@@ -191,7 +225,6 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
 
     function selectPayment(option: string){
         setPaymentSelected(state => state = option)
-        console.log(paymentSelected)
     }
 
     function removeItemOfCart(coffeItem: CoffeDataProps) {
@@ -215,13 +248,37 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
         } else {
             throw Error();
         }
-
         setCartItems(copyCart);
     }
 
     function clearCart() {
         setCartItems([]);
     }
+
+    function sendOrder(dataForm: CheckoutFormData ){
+        console.log("🚀 ~ file: CoffesContext.tsx:259 ~ sendOrder ~ dataForm", dataForm)
+        const dataOrder = {
+            number: dataForm.number,
+            cep: dataForm.cep,
+            address: dataForm.address,
+            district: dataForm.district,
+            city: dataForm.city,
+            UF: dataForm.UF,
+            paymentSelected: paymentSelected,
+            cart: cartItems
+        }
+        const stateJSON = JSON.stringify(dataOrder)
+        console.log("🚀 ~ file: CoffesContext.tsx:271 ~ sendOrder ~ stateJSON", stateJSON)
+        localStorage.setItem('@coffe-shop: order-state-1.0.0', stateJSON)
+        setOrder(state => state = dataOrder)
+        useEffect(() => {
+
+
+            localStorage.setItem('@coffe-shop: order-state-1.0.0', stateJSON)
+        }, [order])
+        console.log(order)
+    }
+
 
 
     return (
@@ -232,7 +289,10 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
                 removeItemOfCart,
                 cartItems,
                 updateAmount,
-                selectPayment
+                selectPayment,
+                paymentSelected,
+                sendOrder,
+                order
             }
         }>
             {children}

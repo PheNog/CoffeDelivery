@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 export const CheckoutMasterContainer = styled.form`
     display: flex;
@@ -94,6 +95,26 @@ export const ButtonConfirmOrder = styled.button`
     :hover{
         background: ${props => props.theme["yellow-dark"]};
     }
+    :disabled{
+        background: ${props => props.theme["yellow-light"]};
+        cursor: not-allowed;
+    }
+`
+export const StyledNavLink = styled(NavLink)`
+    display: flex;
+    width: 100%;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 8px;
+    gap: 4px;
+    height: 46px;
+    background: transparent;
+    border-radius: 6px;
+    border: 0;
+    text-decoration: none;
 `
 export const ItemsCartContainer = styled.div`
     display: flex;
