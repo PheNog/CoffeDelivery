@@ -15,13 +15,12 @@ export const CartAndLocation = styled.div`
     display: flex;
     flex-direction: row;
     gap: 0.75rem;
-
     img {
         width: 143px;
         height: 40px;
     }
-
 `
+
 export const ItemsContainer = styled.div`
         width: 100%;
         display: flex;
@@ -47,9 +46,9 @@ export const ButtonCartWithLabel = styled.button`
         :hover{
             outline:0;
         box-shadow: 0 0 0 2px ${(props) => props.theme['yellow-dark']};
-
         }
 `
+
 export const BoxLocation = styled.div`
     display: flex;
     flex-direction: row;
@@ -74,14 +73,15 @@ export const BoxLocation = styled.div`
         color: ${props => props.theme.purple};
     }
 `
+
 export const LabelTotalItems = styled.label`
     border-radius: 50%;
     background: ${props => props.theme["yellow-dark"]};
-    position: absolute;
-    top: 9.5%;
+    position: relative;
+    right: 10%;
+    bottom: 10%;
     width: 16px;
     height: 16px;
-
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
@@ -89,4 +89,7 @@ export const LabelTotalItems = styled.label`
     line-height: 130%;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    padding: 1px;
+    margin-left: 0.5px
 `

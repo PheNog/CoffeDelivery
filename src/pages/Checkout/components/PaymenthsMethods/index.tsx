@@ -9,7 +9,6 @@ export function PaymentMethods() {
 
     function handleSelectPaymentMethod(option: string) {
         selectPayment(option)
-        console.log('OPTIONS', option)
     }
 
     return (

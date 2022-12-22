@@ -20,6 +20,7 @@ import {
 } from "./styles";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { redirect, useNavigate } from "react-router-dom";
 
 
 export interface TotalItemsCart {
@@ -41,6 +42,8 @@ const checkoutFormValidationSchema = zod.object({
 export function Checkout() {
     const { cartItems, sendOrder } = useContext(CoffeContext)
     const [isSubmitDisabled, setIsSubmitDisabled] = useState(true)
+
+    const navigate = useNavigate();
 
     const totalCart = cartItems.map(el => el.itemQuantity * el.coffePrice).reduce((total, item) => total + item, 0)
     const totalWithDelivery = totalCart + 3.5
@@ -65,9 +68,9 @@ export function Checkout() {
     })
 
     function handleCreateOrder(data: CheckoutFormData) {
-        console.log("🚀 ~ file: index.tsx:68 ~ handleCreateOrder ~ data", data)
         sendOrder(data)
         reset()
+        navigate("/checkout/success-order");
     }
 
     const { handleSubmit, watch, reset } = checkoutForm
@@ -75,7 +78,6 @@ export function Checkout() {
     const watchAllFields = watch(['cep', 'address', 'number', 'district', 'city', 'UF'])
     const validateFields = watchAllFields.filter(item => item === '')
 
-    console.log("🚀 ~ file: index.tsx:74 ~ Checkout ~ watchAllFields", watchAllFields)
     if (isSubmitDisabled === true) {
         if (validateFields.length === 0) {
             setIsSubmitDisabled(state => state = false)
@@ -122,14 +124,14 @@ export function Checkout() {
                             <div>{totalsObject.totalCartWithDeliveryFormatted}</div>
                         </RowFinalTotal>
                     </ContainerPaymentConfirm>
-                    <StyledNavLink to='/checkout/success-order'>
+                    {/* <StyledNavLink to='/checkout/success-order'> */}
                         <ButtonConfirmOrder
                             type='submit'
                             disabled={isSubmitDisabled}
                         >
                             CONFIRMAR PEDIDO
                         </ButtonConfirmOrder>
-                    </StyledNavLink>
+                    {/* </StyledNavLink> */}
                 </CardCartContainer>
             </CartComponentContainer>
         </CheckoutMasterContainer>

@@ -24,7 +24,6 @@ type inputMenuData = zod.infer<typeof inputMenuSchema>
 export function Home() {
     const { menuItems } = useContext(CoffeContext)
 
-
     const inputMenu = useForm<inputMenuData>({
         resolver: zodResolver(inputMenuSchema),
         defaultValues: {

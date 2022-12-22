@@ -13,7 +13,7 @@ import coffeImg12 from './assets/Type=Havaiano.svg'
 import coffeImg13 from './assets/Type=Árabe.svg'
 import coffeImg14 from './assets/Type=Irlandês.svg'
 import { createContext, ReactNode, useEffect, useState } from 'react'
-import { TotalItemsCart } from '../pages/Checkout'
+import { redirect } from "react-router-dom";
 
 
 interface CoffesContextType {
@@ -256,7 +256,6 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
     }
 
     function sendOrder(dataForm: CheckoutFormData ){
-        console.log("🚀 ~ file: CoffesContext.tsx:259 ~ sendOrder ~ dataForm", dataForm)
         const dataOrder = {
             number: dataForm.number,
             cep: dataForm.cep,
@@ -268,18 +267,10 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
             cart: cartItems
         }
         const stateJSON = JSON.stringify(dataOrder)
-        console.log("🚀 ~ file: CoffesContext.tsx:271 ~ sendOrder ~ stateJSON", stateJSON)
         localStorage.setItem('@coffe-shop: order-state-1.0.0', stateJSON)
         setOrder(state => state = dataOrder)
-        useEffect(() => {
-
-
-            localStorage.setItem('@coffe-shop: order-state-1.0.0', stateJSON)
-        }, [order])
-        console.log(order)
+        clearCart()
     }
-
-
 
     return (
         <CoffeContext.Provider value={

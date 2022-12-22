@@ -7,14 +7,16 @@ export const CardMenuContainer = styled.div`
     top: 0px;
     background: ${(props) => props.theme['base-card']};
     border-radius: 6px 36px;
-    box-shadow: 1px 6px 5px gray;
+    box-shadow: 1px 1px 5px ${(props) => props.theme['purple-dark']};
 `
+
 export const ImageLabelTitleSubtitleContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 1rem;
 `
+
 export const ImageMenuItem = styled.img`
     position: relative;
     width: 120px;
@@ -22,6 +24,7 @@ export const ImageMenuItem = styled.img`
     top: -2rem;
     margin-bottom: 0.75rem;
 `
+
 export const CoffeTypeLabel = styled.label`
     background: ${(props) => props.theme['yellow-light']};
     color: ${(props) => props.theme['yellow-dark']};
@@ -34,7 +37,6 @@ export const CoffeTypeLabel = styled.label`
     padding: 4px 8px;
     display: flex;
     align-items: center;
-    /* identical to box height, or 13px */
     margin: 0;
     text-transform: uppercase;
     position: relative;
@@ -42,7 +44,6 @@ export const CoffeTypeLabel = styled.label`
     margin-bottom: 1rem;
 `
 export const CoffeFlavorName = styled.h1`
-    /* Title/Title S */
     font-family: 'Baloo 2';
     font-style: normal;
     font-weight: 700;
@@ -56,7 +57,6 @@ export const CoffeFlavorName = styled.h1`
 `
 
 export const CoffeFlavorDescription = styled.h2`
-    /* Text/Regular S */
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
@@ -78,6 +78,7 @@ export const PriceCountCartContainer = styled.div`
     align-items: center;
     margin-bottom: 1.5rem;
 `
+
 export const PriceLabel = styled.label`
     color:  ${(props) => props.theme['base-text']};
     font-family: 'Baloo 2';
@@ -90,6 +91,7 @@ export const PriceLabel = styled.label`
     order: 0;
     flex-grow: 0;
 `
+
 export const R$Label = styled.label`
     color:  ${(props) => props.theme['base-text']};
     font-family: 'Roboto';
@@ -102,8 +104,8 @@ export const R$Label = styled.label`
     order: 0;
     flex-grow: 0;
     padding: 0.2rem;
-
 `
+
 export const CountAndButtonContainer = styled.div`
     display: flex;
     gap: 0.5rem;
@@ -116,7 +118,7 @@ export const InputCart = styled.input`
     justify-content: center;
     align-items: center;
     width: 1.75rem;
-height: 1.25rem;
+    height: 1.25rem;
     gap: 4px;
     background: #E6E5E5;
     color: black;
@@ -127,6 +129,7 @@ height: 1.25rem;
         box-shadow: 0 0 0 transparent;
     }
 `
+
 export const ButtonCart = styled.button`
     display:flex;
     width: 2.375rem;
@@ -140,12 +143,14 @@ export const ButtonCart = styled.button`
         background-color: ${(props) => props.theme['purple']};
     }
 `
+
 export const ContainerLabelsCoffeType = styled.div`
     display:flex;
     justify-content: center;
     align-items: center;
     gap: 0.25rem;
 `
+
 export const InputAndButtonsContainer = styled.div`
     display:flex;
     justify-content: center;
@@ -153,21 +158,18 @@ export const InputAndButtonsContainer = styled.div`
     width: 72px;
     height: 38px;
     border-radius: 6px;
-
     background: ${props => props.theme['base-button']};
     button {
-    
         height: 100%;
         border: none;
     background: ${props => props.theme['base-button']};
     z-index: 1;
     }
     input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+    input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-}
-
+    }
     svg {
         :hover {
             color: ${props => props.theme['purple-dark']};

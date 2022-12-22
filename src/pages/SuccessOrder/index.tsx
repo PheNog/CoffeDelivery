@@ -11,7 +11,6 @@ export function SuccessOrder() {
   if (storageCart) {
     var order = JSON.parse(storageCart)
   }
-  console.log(order)
 
   if (!order) return
   return (
@@ -30,7 +29,7 @@ export function SuccessOrder() {
                   Entrega em {''}
                   <LabelAddressBold>{order.address}, {order.number}</LabelAddressBold>
                 </ContainerLabelRowCep>
-                <LabelCityData>{order.district} - {order.city}, {order.UF}</LabelCityData>
+                <LabelCityData>{order.district} - {order.city}, {order.UF.toUpperCase()}</LabelCityData>
               </ContainerTitleData>
             </RowDataContainer>
             <RowDataContainer>
