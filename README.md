@@ -26,6 +26,7 @@ Desafio da trilha de especialização Ignite da RocketSeat, foi proposto que des
 - Listas e chaves no ReactJS
 - Propriedades
 - Componentização
+- Reducers
 
  
 #### Features
