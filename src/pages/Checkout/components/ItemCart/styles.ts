@@ -7,67 +7,70 @@ export const ContainerItemCart = styled.div`
     border-bottom: 1px solid #E6E5E5;
     width: 100%;
 `
+
 export const ImageCoffeCart = styled.img`
     width: 4rem;
 `
+
 export const RowNamePrice = styled.div`
     display: flex;
     width: 100%;
     justify-content: space-between;
     margin-bottom: 0.5rem;
 `
+
 export const RowInputButton = styled.div`
     display: flex;
     width: 100%;
     gap: 0.5rem;
-
 `
+
 export const LabelNameItemCart = styled.label`
     display: flex;
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 130%;
     display: flex;
     align-items: center;
     color: ${props => props.theme["base-subtitle"]};
-
 `
+
 export const LabelPriceCart = styled.label`
     display: flex;
     font-style: normal;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 130%;
     display: flex;
     align-items: center;
     text-align: right;
     color:${props => props.theme["base-text"]};
-
-
 `
+
 export const InputNumberCart = styled.input`
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 8px;
-    gap: 4px;
-    width: 72px;
-    height: 32px;
+    padding: 0.5rem;
+    gap: 0.25rem;
+    width: 4.5rem;
+    height: 2rem;
     background:${props => props.theme["base-button"]};
     border-radius: 6px;
     border: 0;
     color: ${props => props.theme["base-text"]};
 `
+
 export const ButtonRemoveCart = styled.button`
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 4px;
-    width: 91px;
-    height: 32px;
+    gap: 0.25rem;
+    width: 5.6875rem;
+    height: 2rem;
     color: ${props => props.theme["base-text"]};
     background: ${props => props.theme["base-button"]};
     border-radius: 6px;
@@ -75,7 +78,7 @@ export const ButtonRemoveCart = styled.button`
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 0.75rem;
     line-height: 160%;
     text-transform: uppercase;
     svg {
@@ -86,6 +89,7 @@ export const ButtonRemoveCart = styled.button`
         background-color: ${props => props.theme["base-hover"]};
     }
 `
+
 export const NameInputContainer = styled.button`
     display: flex;
     flex-direction: column;
@@ -101,21 +105,18 @@ export const InputAndButtonsContainer = styled.div`
     width: 4.5rem;
     height: 2rem;
     border-radius: 6px;
-
     background: ${props => props.theme['base-button']};
     button {
-    
         height: 100%;
         border: none;
-    background: ${props => props.theme['base-button']};
-    z-index: 1;
+        background: ${props => props.theme['base-button']};
+        z-index: 1;
     }
     input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+    input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-}
-
+    }
     svg {
         :hover {
             color: ${props => props.theme['purple-dark']};
@@ -123,7 +124,6 @@ input::-webkit-inner-spin-button {
         color: ${props => props.theme['purple']};
         padding: 0rem;
     }
-
 `
 
 export const InputCart = styled.input`
@@ -132,8 +132,8 @@ export const InputCart = styled.input`
     justify-content: center;
     align-items: center;
     width: 1.75rem;
-height: auto;
-    gap: 4px;
+    height: auto;
+    gap: 0.25rem;
     background: #E6E5E5;
     color: black;
     border: 0;

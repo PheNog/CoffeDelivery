@@ -12,12 +12,13 @@ import coffeImg11 from './assets/Type=Cubano.svg'
 import coffeImg12 from './assets/Type=Havaiano.svg'
 import coffeImg13 from './assets/Type=Árabe.svg'
 import coffeImg14 from './assets/Type=Irlandês.svg'
-import { createContext, ReactNode, useEffect, useState } from 'react'
-import { redirect } from "react-router-dom";
+import { createContext, ReactNode, useEffect, useReducer, } from 'react'
+import { coffesReducer } from '../reducers/coffes/reducer'
+import { addItemToCartAction, clearCartAction, removeItemOfCartAction, selectPaymentAction, sendOrderAction, updateAmountAction } from '../reducers/coffes/actions'
 
 
 interface CoffesContextType {
-    menuItems: CoffeDataProps[]
+    dataCoffesFlavor: CoffeDataProps[]
     addItemToCart: (data: CoffeDataProps) => void
     removeItemOfCart: (data: CoffeDataProps) => void
     cartItems: CoffeDataProps[]
@@ -26,7 +27,7 @@ interface CoffesContextType {
     paymentSelected: string
     sendOrder: (dataForm: CheckoutFormData) => void
     order: OrderData
-
+    menuItems: CoffeDataProps[]
 }
 
 
@@ -48,7 +49,7 @@ interface CoffeContextProviderProps {
     children: ReactNode
 }
 
-export interface OrderData{
+export interface OrderData {
     address: string,
     number: string,
     city: string,
@@ -186,7 +187,7 @@ const dataCoffesFlavor: CoffeDataProps[] = [
         coffeImage: coffeImg14
     },
 ]
-type CheckoutFormData = {
+export type CheckoutFormData = {
     number: string;
     cep: string;
     address: string;
@@ -197,65 +198,47 @@ type CheckoutFormData = {
 }
 
 export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
-    const [paymentSelected, setPaymentSelected] = useState('Cartão de Débito')
-    const [cartItems, setCartItems] = useState<Array<CoffeDataProps>>([])
-    const [menuItems, setMenuItems] = useState<Array<CoffeDataProps>>(dataCoffesFlavor)
-    const [order, setOrder] = useState<OrderData>({
-        address: '',
-        number: '',
-        city: '',
-        district: '',
-        UF: '',
-        paymentSelected: paymentSelected,
-        cart: cartItems
-    })
-    
+
+    const [coffesState, dispatch] = useReducer(
+        coffesReducer,
+        {
+            cartItems: [],
+            paymentSelected: 'Cartão de Débito',
+            order: {
+                address: '',
+                number: '',
+                city: '',
+                district: '',
+                UF: '',
+                paymentSelected: '',
+                cart: []
+            },
+            menuItems: [...dataCoffesFlavor]
+        }
+    )
+
+    const { cartItems, order, paymentSelected, menuItems } = coffesState
 
     function addItemToCart(coffeItem: CoffeDataProps) {
-        const copyCart = [...cartItems];
-        const productIndex = copyCart.findIndex(cartItem => cartItem.id === coffeItem.id);
-        if (productIndex < 0) {
-            copyCart.push(coffeItem);
-        } else {
-            copyCart[productIndex].itemQuantity += coffeItem.itemQuantity;
-        }
-        setCartItems(copyCart)
+        dispatch(addItemToCartAction(coffeItem))
     }
 
-
-    function selectPayment(option: string){
-        setPaymentSelected(state => state = option)
+    function selectPayment(option: string) {
+        dispatch(selectPaymentAction(option))
     }
 
     function removeItemOfCart(coffeItem: CoffeDataProps) {
-        const copyCart = [...cartItems];
-        const filteredCart = copyCart.filter(cartItem => cartItem.id !== coffeItem.id);
-
-        setCartItems(filteredCart)
+        dispatch(removeItemOfCartAction(coffeItem))
     }
 
     function updateAmount(
         id: string,
         type: string
     ) {
-        const copyCart = [...cartItems];
-        const productIndex = copyCart.findIndex(product => product.id === id);
-
-        if (productIndex >= 0) {
-            const item = copyCart[productIndex];
-            copyCart[productIndex].itemQuantity =
-                type === "increment" ? item.itemQuantity + 1 : item.itemQuantity - 1;
-        } else {
-            throw Error();
-        }
-        setCartItems(copyCart);
+        dispatch(updateAmountAction(id, type))
     }
 
-    function clearCart() {
-        setCartItems([]);
-    }
-
-    function sendOrder(dataForm: CheckoutFormData ){
+    function sendOrder(dataForm: CheckoutFormData) {
         const dataOrder = {
             number: dataForm.number,
             cep: dataForm.cep,
@@ -268,14 +251,14 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
         }
         const stateJSON = JSON.stringify(dataOrder)
         localStorage.setItem('@coffe-shop: order-state-1.0.0', stateJSON)
-        setOrder(state => state = dataOrder)
-        clearCart()
+        dispatch(sendOrderAction(dataOrder))
+        dispatch(clearCartAction())
     }
 
     return (
         <CoffeContext.Provider value={
             {
-                menuItems,
+                dataCoffesFlavor,
                 addItemToCart,
                 removeItemOfCart,
                 cartItems,
@@ -283,7 +266,8 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
                 selectPayment,
                 paymentSelected,
                 sendOrder,
-                order
+                order,
+                menuItems
             }
         }>
             {children}

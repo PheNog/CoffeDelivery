@@ -12,7 +12,7 @@ export const HomeContainer = styled.main`
 
 export const TitleSubtitleAndItems = styled.div`
     align-items: center;
-    width: 588px;
+    width: 36.75rem;
     margin-left: 8rem;
     h1 {
         color: ${props => props.theme["base-title"]};
@@ -37,13 +37,14 @@ export const TitleSubtitleAndItems = styled.div`
 export const RowIntroContainer = styled.div`
     width: 100%;
     display: flex;
-    height: 544px;
+    height: 34rem;
     justify-content: center;
     align-items: center;
     background-image: url(${BackgroundImage}) ;
     background-size: cover;
-    backdrop-filter: blur(80px);
+    backdrop-filter: blur(5rem);
 `
+
 export const ItemsIconsAndLabels = styled.div`
     color: ${props => props.theme["base-text"]};
     font-family: 'Roboto';
@@ -68,33 +69,36 @@ export const IconAndLabel = styled.div`
     align-items: center;
     gap: 0.75rem;
 `
+
 export const ContainerItemsIcons = styled.div`
     display: flex;
     gap: 2rem;
 `
 
 export const ImgCoffeCup = styled.img`
-    width: 476px;
-    height: 360px;
+    width: 29.75rem;
+    height: 22.5rem;
     margin-right:8rem ;
 `
+
 export const MenuFullContainer = styled.div`
     margin-left: 8rem;
     margin-bottom: 1rem;
     padding: 0 0.5rem;
 `
+
 export const TitleMenuCoffes = styled.div`
     font-family: 'Baloo 2';
     font-style: normal;
     font-weight: 800;
-    font-size: 32px;
+    font-size: 2rem;
     line-height: 130%;
     display: flex;
     align-items: center;
     color: ${props => props.theme["base-subtitle"]};
     margin-bottom: 2rem;
-
 `
+
 export const CoffesCatalogContainer = styled.div`
     display: flex;
     gap: 2rem;

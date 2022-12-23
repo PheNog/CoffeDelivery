@@ -16,7 +16,7 @@ export const GlobalStyle = createGlobalStyle`
     input{
         :focus {
         outline:0;
-        box-shadow: 0 0 0 2px ${(props) => props.theme['yellow-dark']};
+        box-shadow: 0 0 0 0.125rem ${(props) => props.theme['yellow-dark']};
     }
 
     }

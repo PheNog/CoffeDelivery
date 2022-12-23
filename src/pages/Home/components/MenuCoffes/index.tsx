@@ -16,8 +16,8 @@ import {
 
 } from "./styles";
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
-import { CoffeContext, CoffeDataProps } from "../../contexts/CoffesContext";
-import { useContext, useState } from "react";
+import { CoffeContext, CoffeDataProps } from "../../../../contexts/CoffesContext";
+import { useContext } from "react";
 
 
 interface MenuCoffesProps {
@@ -27,23 +27,19 @@ interface MenuCoffesProps {
 export function MenuCoffes({
     coffeFlavor
 }: MenuCoffesProps) {
-    const { addItemToCart } = useContext(CoffeContext)
 
-    const [amountItem, setAmountItem] = useState(1)
-    coffeFlavor.itemQuantity = amountItem
-
-    function handleIncrement() {
-        setAmountItem(state => state + 1)
-    }
-
-    function handleDecrement() {
-        setAmountItem(state => state - 1)
-    }
+    const { addItemToCart, updateAmount } = useContext(CoffeContext)
 
     function handleAddItemToCart() {
         addItemToCart(coffeFlavor)
     }
 
+    function handleUpdateAmount(
+        id:string, 
+        type:"increment" | "decrement"
+    ) {
+        updateAmount(id, type)
+    }
 
     return (
         <CardMenuContainer>
@@ -79,8 +75,9 @@ export function MenuCoffes({
                 <CountAndButtonContainer>
                     <InputAndButtonsContainer>
                         <button
-                            onClick={() => handleDecrement()}
-                            disabled={amountItem <= 1}>
+                            onClick={() =>  handleUpdateAmount(coffeFlavor.id, 'decrement')}
+                            disabled={coffeFlavor.itemQuantity <= 1}
+                            >
                             <Minus size={16} />
                         </button>
                         <InputCart
@@ -89,11 +86,11 @@ export function MenuCoffes({
                             step={1}
                             min={1}
                             max={10}
-                            value={amountItem}
+                            value={coffeFlavor.itemQuantity}
                             readOnly
                         />
                         <button
-                            onClick={() => handleIncrement()}
+                            onClick={() => handleUpdateAmount(coffeFlavor.id, 'increment')}
                             >
                             <Plus size={16} />
                         </button>

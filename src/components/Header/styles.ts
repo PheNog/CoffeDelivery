@@ -16,8 +16,8 @@ export const CartAndLocation = styled.div`
     flex-direction: row;
     gap: 0.75rem;
     img {
-        width: 143px;
-        height: 40px;
+        width: 8.9375rem;
+        height: 2.5rem;
     }
 `
 
@@ -29,23 +29,23 @@ export const ItemsContainer = styled.div`
 `
 
 export const LogoHeader = styled.img`
-    width: 85px;
-    height: 40px;
+    width: 5.3125rem;
+    height: 2.5rem;
 `
 
 export const ButtonCartWithLabel = styled.button`
-        width: 38px;
-        height: 38px;
+        width: 2.375rem;
+        height: 2.375rem;
         border-radius: 8px;
         border: 0;
+        cursor: pointer;
         background-color: ${(props) => props.theme["yellow-light"]};
         svg {
             color: ${(props) => props.theme["yellow-dark"]};
         }
-        cursor: pointer;
         :hover{
             outline:0;
-        box-shadow: 0 0 0 2px ${(props) => props.theme['yellow-dark']};
+        box-shadow: 0 0 0 0.125rem ${(props) => props.theme['yellow-dark']};
         }
 `
 
@@ -54,16 +54,16 @@ export const BoxLocation = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 8px;
-    gap: 4px;
-    width: 143px;
-    height: 38px;
+    padding: 0.5rem;
+    gap: 0.25rem;
+    width: 8.9375rem;
+    height: 2.375rem;
     background: #EBE5F9;
     border-radius: 6px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 130%;
     flex: none;
     order: 0;
@@ -80,12 +80,12 @@ export const LabelTotalItems = styled.label`
     position: relative;
     right: 10%;
     bottom: 10%;
-    width: 16px;
-    height: 16px;
+    width: 1rem;
+    height: 1rem;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
-    font-size: 12px;
+    font-size: 0.75rem;
     line-height: 130%;
     align-items: center;
     justify-content: center;

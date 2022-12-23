@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
 export const CardMenuContainer = styled.div`
-    width: 256px;
-    height: 310px;
-    left: 0px;
+    width: 16rem;
+    height: 19.375rem;
+    left: 0rem;
     top: 0px;
     background: ${(props) => props.theme['base-card']};
     border-radius: 6px 36px;
-    box-shadow: 1px 1px 5px ${(props) => props.theme['purple-dark']};
+    box-shadow: 0.0625rem 0.0625rem 0.3125rem ${(props) => props.theme['purple-dark']};
 `
 
 export const ImageLabelTitleSubtitleContainer = styled.div`
@@ -19,8 +19,8 @@ export const ImageLabelTitleSubtitleContainer = styled.div`
 
 export const ImageMenuItem = styled.img`
     position: relative;
-    width: 120px;
-    height: 120px;
+    width: 7.5rem;
+    height: 7.5rem;
     top: -2rem;
     margin-bottom: 0.75rem;
 `
@@ -31,10 +31,10 @@ export const CoffeTypeLabel = styled.label`
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
-    font-size: 10px;
+    font-size: 0.625rem;
     line-height: 130%;
     border-radius: 100px;
-    padding: 4px 8px;
+    padding: 0.25rem 0.5rem;
     display: flex;
     align-items: center;
     margin: 0;
@@ -43,24 +43,24 @@ export const CoffeTypeLabel = styled.label`
     top: -2rem;
     margin-bottom: 1rem;
 `
+
 export const CoffeFlavorName = styled.h1`
     font-family: 'Baloo 2';
     font-style: normal;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 1.25rem;
     line-height: 130%;
     color:  ${(props) => props.theme['base-subtitle']};
     position: relative;
     top: -2rem;
     margin-bottom: 0.5rem;
-
 `
 
 export const CoffeFlavorDescription = styled.h2`
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 130%;
     text-align: center;
     color:  ${(props) => props.theme['base-label']};
@@ -68,6 +68,7 @@ export const CoffeFlavorDescription = styled.h2`
     width: 15rem;
     top: -2rem;
 `
+
 export const PriceCountCartContainer = styled.div`
     display: flex;
     position: relative;
@@ -155,8 +156,8 @@ export const InputAndButtonsContainer = styled.div`
     display:flex;
     justify-content: center;
     align-items: center;
-    width: 72px;
-    height: 38px;
+    width: 4.5rem;
+    height: 2.375rem;
     border-radius: 6px;
     background: ${props => props.theme['base-button']};
     button {

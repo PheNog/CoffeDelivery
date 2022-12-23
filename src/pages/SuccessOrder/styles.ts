@@ -21,7 +21,7 @@ export const TitleConfirmOrder = styled.label`
     font-family: 'Baloo 2';
     font-style: normal;
     font-weight: 800;
-    font-size: 32px;
+    font-size: 2rem;
     line-height: 130%;
     color: ${(props) => props.theme["yellow-dark"]};
 `
@@ -30,7 +30,7 @@ export const SubTitleConfirmOrder = styled.label`
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 1.25rem;
     line-height: 130%;
     color: ${(props) => props.theme["base-subtitle"]};
     font-stretch: 100;
@@ -40,9 +40,9 @@ export const ContainerOrderData = styled.div`
     display: flex;
     border-radius: 6px 36px;
     flex-direction: column;
-    padding: 2.5rem;
-    gap: 2rem;
-    width: 526px;
+    padding: 40px;
+    gap: 32px;
+    width: 32.875rem;
 `
 
 export const RowDataContainer = styled.div`
@@ -51,8 +51,8 @@ export const RowDataContainer = styled.div`
 `
 
 export const LogoRowData = styled.img`
-    width: 32px;
-    margin-right: 0.75rem;
+    width: 2rem;
+    margin-right: 12px;
 `
 
 export const ContainerTitleData = styled.div`
@@ -64,7 +64,7 @@ export const ContainerTitleData = styled.div`
 export const ContainerLabelRowCep = styled.div`
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 130%;
     color: ${(props) => props.theme["base-text"]};
 `
@@ -72,7 +72,7 @@ export const ContainerLabelRowCep = styled.div`
 export const LabelAddressBold = styled.label`
     font-style: normal;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 130%;
     color: ${(props) => props.theme["base-text"]};
 `
@@ -80,7 +80,7 @@ export const LabelAddressBold = styled.label`
 export const LabelCityData = styled.label`
         font-style: normal;
         font-weight: 400;
-        font-size: 16px;
+        font-size: 1rem;
         line-height: 130%;
         color: ${(props) => props.theme["base-text"]};
 `
@@ -88,14 +88,14 @@ export const LabelCityData = styled.label`
 export const LabelComumText = styled.label`
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 130%;
     color: ${(props) => props.theme["base-text"]};
 `
 export const LabelBoldText = styled.label`
     font-style: normal;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 130%;
     color: ${(props) => props.theme["base-text"]};
 
@@ -109,8 +109,8 @@ export const ColumnImage = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    width: 492px;
-    height: 293px;
+    width: 30.75rem;
+    height: 18.3125rem;
     max-width: 1366px;
 
 `

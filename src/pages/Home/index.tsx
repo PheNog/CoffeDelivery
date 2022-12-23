@@ -5,35 +5,13 @@ import logoItem1 from '../../assets/icon (1).svg'
 import logoItem2 from '../../assets/icon (2).svg'
 import logoItem3 from '../../assets/icon (5).svg'
 import logoItem4 from '../../assets/icon (4).svg'
-import { MenuCoffes } from "../../components/MenuCoffes";
+import { MenuCoffes } from "./components/MenuCoffes";
 import { useContext } from "react";
 import { CoffeContext } from "../../contexts/CoffesContext";
-import * as zod from 'zod'
 
-import { FormProvider, useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-
-
-
-const inputMenuSchema = zod.object({
-    itemsAmount: zod.number().min(1).max(10, 'Você só pode adicionar 10 itens por vez.'),
-})
-
-type inputMenuData = zod.infer<typeof inputMenuSchema>
 
 export function Home() {
     const { menuItems } = useContext(CoffeContext)
-
-    const inputMenu = useForm<inputMenuData>({
-        resolver: zodResolver(inputMenuSchema),
-        defaultValues: {
-            itemsAmount: 1
-        }
-    })
-    const { handleSubmit, watch, reset } = inputMenu
-
-    const itemsAmount = watch('itemsAmount')
-
 
     return (
         <HomeContainer>
@@ -53,7 +31,6 @@ export function Home() {
                                 <img src={logoItem2} />
                                 <span>
                                     Entrega rápida e rastreada
-
                                 </span>
                             </IconAndLabel>
                         </ItemsIconsAndLabels>
@@ -76,26 +53,20 @@ export function Home() {
                 <ImgCoffeCup src={coffeCupHome} />
             </RowIntroContainer>
             <MenuFullContainer>
-                <FormProvider {...inputMenu}>
-
-                    <TitleMenuCoffes>
-                        Nossos cafés
-                    </TitleMenuCoffes>
-
-                    <CoffesCatalogContainer>
-                        {menuItems.map((coffeFlavor) => {
-
-                            return (
-                                <MenuCoffes
-                                    key={coffeFlavor.id}
-                                    coffeFlavor={coffeFlavor}
-                                />
-                            )
-                        })
-                        }
-                    </CoffesCatalogContainer>
-                </FormProvider>
-
+                <TitleMenuCoffes>
+                    Nossos cafés
+                </TitleMenuCoffes>
+                <CoffesCatalogContainer>
+                    {menuItems.map((coffeFlavor) => {
+                        return (
+                            <MenuCoffes
+                                key={coffeFlavor.id}
+                                coffeFlavor={coffeFlavor}
+                            />
+                        )
+                    })
+                    }
+                </CoffesCatalogContainer>
             </MenuFullContainer>
         </HomeContainer >
     )

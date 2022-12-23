@@ -6,8 +6,6 @@ import { GlobalStyle } from './styles/global'
 import { CoffeContextProvider } from "./contexts/CoffesContext";
 
 function App() {
-
-
   return (
     <BrowserRouter>
       <ThemeProvider theme={defaultTheme}>

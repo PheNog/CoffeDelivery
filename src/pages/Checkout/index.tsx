@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { CoffeContext } from "../../contexts/CoffesContext";
 import { toBrlPt } from "../../utils/methods";
 import { FormCheckout } from "./components/FormCheckout";
@@ -15,12 +15,11 @@ import {
     ItemsCartContainer,
     RowFinalTotal,
     RowTotalItensEntrega,
-    StyledNavLink,
     TitlesCheckout
 } from "./styles";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 export interface TotalItemsCart {
@@ -84,8 +83,6 @@ export function Checkout() {
         }
     }
 
-
-
     return (
         <CheckoutMasterContainer onSubmit={handleSubmit(handleCreateOrder)}>
             <FormAndPaymentContainer >
@@ -98,8 +95,7 @@ export function Checkout() {
             <CartComponentContainer>
                 <TitlesCheckout>Cafés selecionados</TitlesCheckout>
                 <CardCartContainer>
-                    <ItemsCartContainer
-                    >
+                    <ItemsCartContainer>
                         {cartItems.map((item) => {
                             return (
                                 <ItemCart

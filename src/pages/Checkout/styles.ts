@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
 
 export const CheckoutMasterContainer = styled.form`
     display: flex;
@@ -9,6 +8,7 @@ export const CheckoutMasterContainer = styled.form`
     max-width: 1360px;
     margin-top: 2.25rem;
 `
+
 export const FormAndPaymentContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -24,18 +24,19 @@ export const CartComponentContainer = styled.div`
     flex-direction: column;
     gap: 1rem;
 `
+
 export const TitlesCheckout = styled.div`
     font-family: 'Baloo 2';
     font-style: normal;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 1.125rem;
     line-height: 130%;
     display: flex;
     width: 100%;
     justify-content: flex-start;
     color: ${props => props.theme["base-subtitle"]};
-
 `
+
 export const CardCartContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -44,6 +45,7 @@ export const CardCartContainer = styled.div`
     background: ${props => props.theme["base-card"]};
     border-radius: 6px 44px;
 `
+
 export const ContainerPaymentConfirm = styled.div`
     display: flex;
     flex-direction: column;
@@ -52,13 +54,12 @@ export const ContainerPaymentConfirm = styled.div`
     margin-bottom: 1.5rem;
 `
 
-
 export const RowTotalItensEntrega = styled.div`
     display:flex;
     width: 100%;
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 130%;
     display: flex;
     align-items: center;
@@ -66,28 +67,29 @@ export const RowTotalItensEntrega = styled.div`
     color: ${props => props.theme["base-text"]};
     justify-content: space-between;
 `
+
 export const RowFinalTotal = styled.div`
     display:flex;
     width: 100%;
     justify-content: space-between;
     font-style: normal;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 1.25rem;
     line-height: 130%;
     align-items: center;
     text-align: right;
     color: ${props => props.theme["base-subtitle"]};
-
 `
+
 export const ButtonConfirmOrder = styled.button`
     display: flex;
-    width: 100%;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 12px 8px;
-    gap: 4px;
-    height: 46px;
+    width: 100%;
+    height: 2.875rem;
+    padding: 0.75rem 0.5rem;
+    gap: 0.25rem;
     background: ${props => props.theme["yellow"]};
     border-radius: 6px;
     border: 0;
@@ -100,22 +102,7 @@ export const ButtonConfirmOrder = styled.button`
         cursor: not-allowed;
     }
 `
-export const StyledNavLink = styled(NavLink)`
-    display: flex;
-    width: 100%;
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 12px 8px;
-    gap: 4px;
-    height: 46px;
-    background: transparent;
-    border-radius: 6px;
-    border: 0;
-    text-decoration: none;
-`
+
 export const ItemsCartContainer = styled.div`
     display: flex;
     width: 100%;
